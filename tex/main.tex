@@ -1,0 +1,98 @@
+\documentclass[12pt, twoside]{report}
+
+% Paquetes LaTeX y estilos globales
+\input{configuracion/paquetes}
+\input{configuracion/estilo} 
+
+% Con \hypersetup podremos introducir los metadatos para la descripción del documento PDF. Recuerda modificarlo cuando transformes el documento.
+\hypersetup{ 
+    pdfauthor={Iván Barberá}
+    pdftitle={El fuego en el norte de la Patagonia Andina: entendiendo sus controles biofísicos para proyectar el régimen de incendios ante escenarios de cambio climático}
+    pdfsubject={Tesis de Doctorado}
+    pdfkeywords{Probabilidad de quema, modelos, propagación, vegetación, topografía}
+    pdflang={Español}
+    pdfcreator={Iván Barberá}
+}
+
+% Comienzo del documento
+\begin{document}
+
+% Portada y secciones no numeradas
+\include{secciones/00_portada}
+\include{secciones/00_resumen_español}
+\include{secciones/00_resumen_ingles}
+
+
+% Índice del documento y de figuras
+\begingroup
+% Los enlaces son normalmente azules, pero en los índices se configuran a negro
+% para que no aparezca todo azul
+\hypersetup{linkcolor=black}
+
+\clearpage % Asegura que el índice comience en una nueva página
+\thispagestyle{empty}
+
+% Agregar "Índice" SOLO en la navegación del PDF, NO en la TOC
+\pdfbookmark[0]{Índice}{toc}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\endgroup
+    
+% Cambia el estilo de números de página a normal
+\clearpage\pagenumbering{arabic}
+    
+\include{secciones/01_introduccion}
+\include{secciones/02_palitos}
+\include{secciones/03_patrones}
+\include{secciones/04_modelos}
+\include{secciones/05_discusion}
+
+% Bibliografía
+\newpage
+\chapter*{Bibliografía} % Título sin numeración
+\addcontentsline{toc}{chapter}{Bibliografía} % Agregar a la TOC sin número
+
+% Anular numeración de la bibliografía
+\begingroup
+\renewcommand{\chapter}[2]{} % Evita numeración de capítulos en la bibliografía
+\begin{singlespace}
+\bibliographystyle{apalike-ejor-custom}
+\bibliography{bibliografia}
+\end{singlespace}
+\endgroup
+
+% Agradecimientos
+\include{secciones/06_agradecimientos}
+
+% Apéndices
+\appendix % Cambia a numeración con letras
+\clearpage
+\thispagestyle{empty} % Página vacía sin encabezado ni pie
+\phantomsection % Marca correctamente la página en los bookmarks del PDF
+\addcontentsline{toc}{chapter}{Apéndices} % Agrega "Apéndices" al índice
+\begin{center}
+    \vspace*{\fill} % Centrado vertical
+    {\huge \textbf{Apéndices}} % Texto grande y en negrita
+    \vspace*{\fill} % Centrado vertical
+\end{center}
+\clearpage % Asegura que el siguiente apéndice comience en una nueva página
+
+\include{secciones/07_append_palitos}
+\include{secciones/08_append_patrones}
+\include{secciones/09_append_modelos}
+
+% % Paper de respaldo 
+% \newpage
+% \thispagestyle{empty} % Página vacía sin encabezado ni pie
+% \begin{center}
+%     \vspace*{\fill} % Centrado vertical
+%     {\huge \textbf{Artículo de respaldo}} % Texto grande y en negrita
+%     \vspace*{\fill} % Centrado vertical
+% \end{center}
+% \addcontentsline{toc}{chapter}{Artículo de respaldo} % Agrega "Apéndices" al índice
+% \clearpage
+% \includepdf[pages=-]{secciones/10_paper_palitos.pdf} % Inserta todas las páginas del PDF
+
+\end{document}

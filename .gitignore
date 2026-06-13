@@ -1,0 +1,30 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.run.xml
+*.bcf
+*.idx
+*.ilg
+*.ind
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# Editor / OS junk
+.DS_Store
+*~
+.Rhistory
+
+# Do NOT ignore the final thesis PDF (it is the main artifact):
+!barbera-thesis-2025.pdf

@@ -1,0 +1,108 @@
+% Formato del título de capítulos y secciones
+% \titleformat{\chapter}[block]{\titlerule[0.8pt]\normalfont\huge\bfseries}{\thechapter.}{.5em}{\Huge}[{\titlerule[0.8pt]}]
+% \titlespacing*{\chapter}{0pt}{-19pt}{25pt}
+% \titleformat{\section}[block]{\normalfont\Large\bfseries}{\thesection.}{.5em}{\Large}
+
+\titleformat{\chapter}[block]{\normalfont\huge\bfseries}{\thechapter.}{.5em}{\Huge}[{\titlerule[0.8pt]}]
+
+\titlespacing*{\chapter}{0pt}{-19pt}{25pt}
+\titleformat{\section}[block]{\normalfont\Large\bfseries}{\thesection.}{.5em}{\Large}
+
+
+
+% Formato del código fuente con lstlisting
+\lstset{
+  basicstyle=\ttfamily,
+  breaklines=true,
+}
+
+% Márgenes
+\geometry{
+    a4paper,
+    margin=2.5cm
+}
+
+% Limite de profundidad del índice
+\setcounter{tocdepth}{2}
+
+% Indentación de párrafos
+\setlength{\parindent}{0.5cm}
+
+% Espaciado entre párrfos
+\setlength{\parskip}{2mm}
+
+
+% Espaciado entre líneas (equivale a 1.5 en Word según https://tex.stackexchange.com/questions/65849/confusion-onehalfspacing-vs-spacing-vs-word-vs-the-world
+\linespread{1.25}
+% \linespread{1.0} lo dejo así hasta que sea la versión final
+
+\renewcommand{\lstlistingname}{Extracto de código}
+\renewcommand*{\lstlistlistingname}{Índice de extractos de código}
+
+% Label de las referencias
+\crefname{figure}{Fig.}{Figs.} % Singular y plural para figuras
+\crefname{table}{Table}{Tables} % Singular y plural para tablas
+\crefname{equation}{Eq.}{Eqs.} % Singular y plural para ecuaciones
+\crefname{chapter}{Capítulo}{Capítulos} % Singular y plural para 
+
+
+%------------ Caption debajo de las tablas
+\DeclareCaptionLabelSeparator*{spaced}{\\[1.5ex]}
+
+% \captionsetup[table]{textfont=normalsize,format=plain,justification=justified,
+%   singlelinecheck=false,labelsep=period,skip=0.5pt}
+
+%--------------- Caption de tablas y figuras (edit Iván)
+\captionsetup[table]{font={small, singlespacing},
+  format=plain, justification=justified,
+  singlelinecheck=false, labelsep=period, skip=2mm}
+
+\captionsetup[figure]{font={small, singlespacing},
+  format=plain, justification=justified,
+  singlelinecheck=false, labelsep=period, skip=2mm}
+
+% Tipo de columnas con alineación y ancho personalizado
+% (L = left, C = centred)
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Configuración del idioma
+\selectlanguage{spanish}
+\decimalpoint % Fuerza que los números en math mode usen el punto decimal
+
+% Que el espacio en blanco quede al final de la página, no uniforme
+\raggedbottom
+
+
+% Evitar saltos de página justo abajo de títulos de section y subsection
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{10pt}{10pt}{\normalfont\Large\bfseries\@afterheading}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}{10pt}{10pt}{\normalfont\large\bfseries\@afterheading}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0pt}{8pt}{8pt}{\normalfont\normalsize\bfseries\@afterheading}}
+\makeatother
+
+% comando para cpp
+\newcommand\cpp{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\relsize{-3}{\textbf{++}}}\xspace}
+
+
+% Configurar hipervínculos en el texto
+\hypersetup{
+    colorlinks=true, % Hace que los enlaces sean de color en vez de cajas
+    linkcolor=black, % Color de enlaces internos (índice, referencias)
+    citecolor=blue, % Color de referencias bibliográficas
+    filecolor=blue, % Color de enlaces a archivos
+    urlcolor=black, % Mantiene las URLs en azul
+    pdfborder={0 0 0} % Elimina subrayado en la bibliografía
+}
+
+
+% Ubicar flotantes en el comienzo de la página 
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+% Que las figuras y tablas sean del mismo tipo, así 
+% aparecen en orden
+\makeatletter
+\let\ftype@table\ftype@figure
+\makeatother
