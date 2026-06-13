@@ -53,19 +53,9 @@ tex/                      LaTeX sources
   secciones/              Chapters and appendices (\include by main.tex)
 ```
 
-## Building from source
-
-Requires a full TeX distribution (e.g. TeX Live). The bibliography uses BibTeX.
-
-```bash
-cd tex
-pdflatex main
-bibtex   main
-pdflatex main
-pdflatex main
-```
-
-(or simply `latexmk -pdf main.tex`).
+The LaTeX sources under `tex/secciones/` are plain-text chapters, provided to
+make the thesis easy to ingest with a large language model — e.g. to translate
+the Spanish text into another language and/or summarize it.
 
 ## Related work and code
 
@@ -85,6 +75,7 @@ pdflatex main
 
 ## License
 
-<!-- >>> Choose a license. Suggested: CC BY 4.0 for the text/PDF, MIT for any code.
-     Add a LICENSE file before making the repo public, or state "All rights reserved". -->
-To be defined.
+This work is licensed under a
+[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+license — see [`LICENSE`](LICENSE). You are free to share and adapt the material
+for any purpose, provided you give appropriate credit.
